@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body style="padding: 0;margin: 0">
+    <div style="width: 250px;height: 250px;background-color: lightcoral;position: relative;left: 0px;">
+
+    </div>
+</body>
+<script>
+    var div=document.querySelector('div')
+    var x,x1,op=false,x2,p,ppp=true;
+    div.addEventListener('touchstart',function (e){
+        p=div.style.left
+        x1= e.targetTouches[0].pageX
+        // console.log('一开始距离左边的距离'+p)
+        // console.log('鼠标的最初距离:'+x1)
+    })
+    div.addEventListener('touchmove',function (e){
+        op=true
+        console.log(op)
+        x2=e.targetTouches[0].pageX-x1;
+        // console.log('鼠标的最终距离'+e.targetTouches[0].pageX)
+        e.preventDefault();
+        
+    })
+    // console.log(op)
+    div.addEventListener('touchend', function (e) {
+        if (op==true){
+            p = parseFloat(p)
+            x = p + x2
+            // console.log('鼠标移动的距离也是盒子的移动距离:' + x2)
+            div.style.left = x + 'px'
+            div.style.transition = "all .3s"
+        }
+       // div.addEventListener("transitionend", function () {
+       //      console.log('盒子不动时距离左边的距离:' + div.style.left);
+       //  })
+        op = false;
+       //  console.log('55555555555555' + op)
+    })
+
+
+
+
+
+
+
+    // var i=1;
+    // var div=document.querySelector('div')
+    // div.onclick=function(){
+    //     i++;
+    //     div.style.transform="translateX("+50+"px)";
+    // }
+</script>
+</html>
